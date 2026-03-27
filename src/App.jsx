@@ -8,7 +8,7 @@ import './index.css';
 // ============================================================================ //
 // When the scan succeeds, the app will automatically redirect to this URL.
 // Change this to the actual URL of your project frontend dashboard.
-const PROJECT_URL = "http://localhost:3000"; 
+const PROJECT_URL = "https://placement-cell-placement-cell.up.railway.app";
 // ============================================================================ //
 
 export default function App() {
@@ -16,13 +16,13 @@ export default function App() {
 
   const startAuthorization = () => {
     if (status !== 'idle') return;
-    
+
     setStatus('scanning');
 
     // Simulate complete authorization sequence (3 seconds)
     setTimeout(() => {
       setStatus('success');
-      
+
       // Multi-layered epic confetti explosion that lasts until redirect
       const duration = 2500;
       const end = Date.now() + duration;
@@ -49,7 +49,7 @@ export default function App() {
           requestAnimationFrame(frame);
         }
       };
-      
+
       // Start the confetti barrage
       frame();
 
@@ -72,7 +72,7 @@ export default function App() {
           <p className="sub-title">Secure Inauguration Gateway</p>
         </div>
 
-        <div 
+        <div
           className={`scanner-box ${status === 'scanning' ? 'is-scanning' : ''} ${status === 'success' || status === 'redirecting' ? 'is-success' : ''}`}
           onClick={startAuthorization}
         >
@@ -80,7 +80,7 @@ export default function App() {
           <div className="ring ring-2"></div>
           <div className="ring ring-3"></div>
           <div className="scan-line"></div>
-          
+
           <div className="fingerprint-icon">
             {status === 'success' || status === 'redirecting' ? (
               <Check size={90} strokeWidth={3} color="#00ff88" />
@@ -90,12 +90,12 @@ export default function App() {
           </div>
         </div>
 
-        <div 
+        <div
           className="status-text"
           style={{
-            color: status === 'idle' ? '#a1a1aa' : 
-                   status === 'scanning' ? '#00c6ff' : 
-                   '#00ff88'
+            color: status === 'idle' ? '#a1a1aa' :
+              status === 'scanning' ? '#00c6ff' :
+                '#00ff88'
           }}
         >
           {status === 'idle' && "Click to Authorize"}
