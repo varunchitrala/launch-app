@@ -1,0 +1,121 @@
+.app-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.header-container {
+    text-align: center;
+    margin-bottom: 4rem;
+    z-index: 10;
+}
+
+.header-title {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+@media (min-width: 768px) {
+    .header-title {
+        font-size: 4rem;
+    }
+}
+
+.header-subtitle {
+    font-size: 1.25rem;
+    color: #93c5fd;
+    letter-spacing: 0.25em;
+}
+
+.scanner-wrapper {
+    position: relative;
+    width: 16rem;
+    height: 16rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.scanner-ring {
+    position: absolute;
+    width: 14rem;
+    height: 14rem;
+    border: 2px dashed #1e3a8a;
+    border-radius: 50%;
+}
+
+.scanner-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scanner-laser {
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    height: 4px;
+    background-color: #2dd4bf;
+    border-radius: 9999px;
+    box-shadow: 0 0 20px 5px #00ffcc;
+}
+
+.status-message {
+    margin-top: 4rem;
+    font-size: 1.25rem;
+    letter-spacing: 0.2em;
+    font-weight: bold;
+    z-index: 10;
+    min-height: 40px;
+    text-align: center;
+}
+
+.launched-container {
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0; left: 0;
+    background: linear-gradient(to bottom right, #0a192f, #050510, #000000);
+    z-index: 50;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.launched-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to right, #22d3ee, #2563eb);
+    filter: drop-shadow(0 0 20px rgba(0, 255, 204, 0.8));
+    margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .launched-title {
+        font-size: 6rem;
+    }
+}
+
+.launched-subtitle {
+    font-size: 1.5rem;
+    color: #a5f3fc;
+    margin-top: 1.5rem;
+    letter-spacing: 0.3em;
+}

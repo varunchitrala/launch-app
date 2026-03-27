@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #050505;
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Stunning background effect */
+.bg-aurora {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150vw;
+  height: 150vh;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a855f7 180deg, #00c6ff 360deg);
+  filter: blur(120px);
+  opacity: 0.15;
+  animation: rotateAurora 20s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes rotateAurora {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.portal-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.title-container {
+  margin-bottom: 50px;
+  text-align: center;
+  z-index: 10;
+}
+
+.main-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #ffffff, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.sub-title {
+  font-size: 1.1rem;
+  color: #a1a1aa;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.scanner-box {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.scanner-box:hover {
+  transform: scale(1.05);
+}
+
+.scanner-box:active {
+  transform: scale(0.95);
+}
+
+/* Complex spinning rings */
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+.ring-1 {
+  width: 100%;
+  height: 100%;
+  border-top-color: #00c6ff;
+  border-right-color: rgba(0, 198, 255, 0.2);
+  animation: spin 3s linear infinite;
+}
+
+.ring-2 {
+  width: 82%;
+  height: 82%;
+  border-bottom-color: #a855f7;
+  border-left-color: rgba(168, 85, 247, 0.2);
+  animation: spin-reverse 4s linear infinite;
+}
+
+.ring-3 {
+  width: 65%;
+  height: 65%;
+  border-top-color: #2a8af6;
+  border-left-color: rgba(42, 138, 246, 0.2);
+  animation: spin 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Fingerprint styling */
+.fingerprint-icon {
+  z-index: 20;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 0 10px rgba(0, 198, 255, 0));
+}
+
+.scanner-box:hover .fingerprint-icon {
+  color: #00c6ff;
+  filter: drop-shadow(0 0 15px rgba(0, 198, 255, 0.5));
+}
+
+/* Scanning States */
+.is-scanning .ring-1 { border-color: #00ff88 transparent transparent transparent; animation-duration: 1s; }
+.is-scanning .ring-2 { border-color: transparent transparent #00ff88 transparent; animation-duration: 1.2s; }
+.is-scanning .ring-3 { border-color: #00ff88 transparent transparent transparent; animation-duration: 0.8s; }
+.is-scanning .fingerprint-icon { color: #00ff88; filter: drop-shadow(0 0 25px #00ff88); }
+
+.is-success .ring {
+  border-color: #00ff88;
+  animation: pulse-ring 1s ease-out forwards;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.is-success .fingerprint-icon {
+  animation: pop-icon 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes pop-icon {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.status-text {
+  margin-top: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  min-height: 30px;
+  text-transform: uppercase;
+  z-index: 10;
+  transition: color 0.3s;
+}
+
+.scan-line {
+  position: absolute;
+  width: 55%;
+  height: 4px;
+  background: #00ff88;
+  box-shadow: 0 0 20px 2px #00ff88;
+  border-radius: 5px;
+  top: 10%;
+  z-index: 25;
+  animation: scan 1.5s ease-in-out infinite alternate;
+  display: none;
+}
+
+.is-scanning .scan-line {
+  display: block;
+}
+
+@keyframes scan {
+  0% { top: 15%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 85%; opacity: 0; }
+}
